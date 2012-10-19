@@ -17,4 +17,15 @@ class UserController < ApplicationController
       head :bad_request
     end
   end
+
+  def edit
+    @user = User.find_by_username_and_password(params[:username], params[:password])
+    if @user.present?
+      score = @user.score + params[:score].to_i;
+     @user.update_attributes(:score => score);
+      render :json => @user
+    else
+      head :not_found
+    end
+  end
 end

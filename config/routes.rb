@@ -2,6 +2,8 @@ RendaServer::Application.routes.draw do
   get  "user/show"
   get  "user/add"
   post "user/add"
+  get  "user/edit"
+  post "user/edit"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
