@@ -28,4 +28,9 @@ class UserController < ApplicationController
       head :not_found
     end
   end
+
+  def ranking
+    @users = User.order("score desc")
+    render :json => @users;
+  end
 end
