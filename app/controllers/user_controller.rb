@@ -1,17 +1,21 @@
 
 class UserController < ApplicationController
-  def show
-    @user = User.find_by_username_and_password(params[:username], params[:password])
-    if @user.present?
-      render :json => @user
+  
+  # ユーザーの存在確認
+  def exist
+    user = User.find_by_mail_address_and_access_token(params[:mail_address], params[:access_token])
+    if user.present?
+      head user.username.present? ? :ok : :not_found
     else
-      head :not_found
+      head :bad_request
     end
   end
 
-  def add
-    @user = User.new(:username => params[:username], :password => params[:password])
-    if @user.save
+  # ユーザーの登録
+  def register
+    user = User.find_by_mail_address_and_access_token(params[:mail_address], params[:access_token])
+    if user.present?
+      user.update_attributes(:username => params[:username])
       head :ok
     else
       head :bad_request

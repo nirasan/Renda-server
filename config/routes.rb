@@ -1,7 +1,11 @@
 RendaServer::Application.routes.draw do
-  get  "user/show"
-  get  "user/add"
-  post "user/add"
+  get "oauth/index"
+
+  get "oauth/callback"
+
+  get  "user/exist"
+  get  "user/register"
+  post "user/register"
   get  "user/edit"
   post "user/edit"
   get  "user/ranking"
