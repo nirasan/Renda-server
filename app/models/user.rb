@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
-  attr_accessible :mail_address, :username
+  attr_accessible :mail_address, :username, :life
   has_one :token_pair
+  has_meny :rankings
 
   def self.find_by_mail_address_and_access_token(mail_address, access_token)
     user = self.find_by_mail_address(mail_address)

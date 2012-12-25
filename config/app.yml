@@ -1,3 +1,4 @@
+max_life: 5
 google_api:
   scope:        'https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email'
   userinfo_url: 'https://www.googleapis.com/oauth2/v1/userinfo'
