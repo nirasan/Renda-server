@@ -1,0 +1,35 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+p1:
+  user: one
+  category: "personal"
+  count: 10
+p2:
+  user: one
+  category: "personal"
+  count: 15
+p3:
+  user: two 
+  category: "personal"
+  count: 10
+p4:
+  user: one
+  category: "personal"
+  count: 5
+
+g1:
+  user: one
+  category: "general"
+  count: 10
+g2:
+  user: one
+  category: "general"
+  count: 15
+g3:
+  user: two
+  category: "general"
+  count: 10
+g4:
+  user: one
+  category: "general"
+  count: 5

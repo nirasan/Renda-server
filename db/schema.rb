@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206001238) do
+ActiveRecord::Schema.define(:version => 20121224014716) do
+
+  create_table "rankings", :force => true do |t|
+    t.string   "category"
+    t.integer  "user_id"
+    t.integer  "count"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "token_pairs", :force => true do |t|
     t.string   "access_token"
@@ -26,8 +34,9 @@ ActiveRecord::Schema.define(:version => 20121206001238) do
   create_table "users", :force => true do |t|
     t.string   "mail_address"
     t.string   "username"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+    t.integer  "life",         :default => 0
   end
 
 end

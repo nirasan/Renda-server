@@ -35,10 +35,11 @@ class UserController < ApplicationController
   # カウントの記録
   def update_count
     user = User.find_by_mail_address_and_access_token(params[:mail_address], params[:access_token])
-    head :bad_request if user.nil?
+    return head :bad_request if user.nil?
 
-    #TODO: カウントをランキングに記録する
-    logger.debug("count is " + params[:count])
+    # カウントをランキングに記録する
+    Ranking.add(category: "general",  count: params[:count], user_id:user.id)
+    Ranking.add(category: "personal", count: params[:count], user_id:user.id)
 
     # ライフの消費
     new_life = [0, user.life - params[:used_life].to_i].max

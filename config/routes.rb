@@ -1,14 +1,18 @@
 RendaServer::Application.routes.draw do
-  get "oauth/index"
+  
+  get "ranking/personal"
+  get "ranking/general"
 
+  get "oauth/index"
   get "oauth/callback"
 
   get  "user/exist"
   get  "user/register"
   post "user/register"
-  get  "user/edit"
-  post "user/edit"
-  get  "user/ranking"
+  get  "user/status"
+  post "user/status"
+  get  "user/update_count"
+  post "user/update_count"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
