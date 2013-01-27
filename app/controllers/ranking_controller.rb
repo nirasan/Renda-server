@@ -29,7 +29,7 @@ class RankingController < ApplicationController
         rank = real_rank
       end
       prev_count = r.count
-      {username: r.user.username, count: r.count, rank: rank}
+      {username: r.user.username, count: r.count, rank: rank, created_at: r.created_at}
     end
   end
 end

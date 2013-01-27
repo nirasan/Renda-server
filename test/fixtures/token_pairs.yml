@@ -1,15 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  user: one
   access_token: one_access_token
   expires_in: 1
   issued_at: 1
   refresh_token: one_refresh_token
-  user_id: 1
 
 two:
+  user: two
   access_token: two_access_token
   expires_in: 1
   issued_at: 1
   refresh_token: two_refresh_token
-  user_id: 2
