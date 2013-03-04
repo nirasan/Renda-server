@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121224014716) do
+ActiveRecord::Schema.define(:version => 20130304062751) do
 
   create_table "rankings", :force => true do |t|
     t.string   "category"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(:version => 20121224014716) do
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
     t.integer  "life",         :default => 0
+    t.integer  "level",        :default => 1
+    t.integer  "total_count",  :default => 0
+    t.integer  "game_time",    :default => 5
   end
 
 end
