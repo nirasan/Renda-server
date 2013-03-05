@@ -61,6 +61,9 @@ class UserController < ApplicationController
       result[:levelup] = 1
     end
 
+    result[:total_count] = user.total_count
+    result[:next_level_count] = user.next_level_count
+
     render :json => user.attributes.merge(result)
   end
 
