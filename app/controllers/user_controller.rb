@@ -42,9 +42,12 @@ class UserController < ApplicationController
     result = { }
 
     # カウントをランキングに記録する
-    Ranking.add(category: "general",  count: params[:count], user_id:user.id)
-    Ranking.add(category: "personal", count: params[:count], user_id:user.id)
-    result[:ranking] = 1 #TODO: Ranking.add の返り値を判定する
+    if (
+      Ranking.add(category: "general",  count: params[:count], user_id:user.id) ||
+      Ranking.add(category: "personal", count: params[:count], user_id:user.id)
+    ) then
+      result[:rankin] = 1 
+    end
 
     # ライフの消費
     new_life = [0, user.life - params[:used_life].to_i].max
@@ -57,7 +60,7 @@ class UserController < ApplicationController
     if before_level != after_level
       result[:levelup] = 1
     end
-    
+
     render :json => user.attributes.merge(result)
   end
 
