@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   end
 
   def next_level_count
-    APP_CONF['level'][self.next_level]['require_count']
+    self.has_next_level ? APP_CONF['level'][self.next_level]['require_count'] : 0
   end
 
   def add_total_count(count)

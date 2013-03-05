@@ -26,7 +26,9 @@ class UserController < ApplicationController
   def status
     user = User.find_by_mail_address_and_access_token(params[:mail_address], params[:access_token])
     if user.present?
-      render :json => user
+      render :json => user.attributes.merge({
+        :next_level_count => user.next_level_count,
+      })
     else
       head :bad_request
     end
@@ -56,7 +58,7 @@ class UserController < ApplicationController
       result[:levelup] = 1
     end
     
-    render :json => user.attributes.merge({:rankin => 1})
+    render :json => user.attributes.merge(result)
   end
 
 end
