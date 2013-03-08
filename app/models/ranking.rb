@@ -15,7 +15,7 @@ class Ranking < ActiveRecord::Base
     rankings = args[:category] == 'personal' ? self.personal_top(user_id: args[:user_id], limit: limit)
                                              : self.general_top(limit: limit)
     return true if rankings.size < limit
-    return rankings.last.count <= args[:count] 
+    return rankings.last.count <= args[:count].to_i 
   end
 
   # ランク外のレコードを削除する
