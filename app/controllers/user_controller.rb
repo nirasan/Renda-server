@@ -42,16 +42,8 @@ class UserController < ApplicationController
     result = { }
 
     # カウントをランキングに記録する
-    if (
-      Ranking.add(category: "general",  count: params[:count], user_id:user.id) ||
-      Ranking.add(category: "personal", count: params[:count], user_id:user.id)
-    ) then
-      result[:rankin] = 1 
-    end
-
-    # ライフの消費
-    new_life = [0, user.life - params[:used_life].to_i].max
-    user.update_attributes(:life => new_life)
+    Ranking.add(category: "general",  count: params[:count], user_id:user.id) && result[:rankin] = 1
+    Ranking.add(category: "personal", count: params[:count], user_id:user.id) && result[:rankin] = 1
 
     # カウント追加＆レベルアップ
     before_level = user.level
